@@ -9,7 +9,7 @@
 <body>
 <br>
 	<h2>Authorization:</h2>
-	<form action="MainServlet" method="post">
+	<form action="MainServlet" method="get">
 		<input type="hidden" name="command" value="login" />
 		<input type="text" name="name" /> 
 		<input type="password" name="pass" /> 

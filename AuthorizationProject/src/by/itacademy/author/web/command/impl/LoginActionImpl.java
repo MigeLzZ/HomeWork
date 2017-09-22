@@ -1,5 +1,6 @@
 package by.itacademy.author.web.command.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import by.itacademy.author.dao.impl.AbstractDao;
+import by.itacademy.author.service.UserService;
+import by.itacademy.author.service.impl.UserServiceImpl;
 import by.itacademy.author.web.command.BasicAction;
 
 public class LoginActionImpl extends AbstractDao implements BasicAction{
@@ -24,24 +27,15 @@ public class LoginActionImpl extends AbstractDao implements BasicAction{
 	
 
 	@Override
-	public String executeAction(HttpServletRequest req, HttpServletResponse resp) {
-		
-		//HttpSession session = req.getSession();
+	public String executeAction(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		
 		String page = "";
 		String login = req.getParameter("name");
 		String pass = req.getParameter("pass");
 		String adminSet = "";
 		
-		//String templogin = "";
-		//String temppass = "";
-		
-		//session.setAttribute(login, pass);
-		
 		System.out.println(login + " " + pass);
 		Connection cn = null;
-		
-		//Statement st = null;
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -50,43 +44,22 @@ public class LoginActionImpl extends AbstractDao implements BasicAction{
 			Class.forName(DB_DRIVER);
 			cn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
 			
-			//st = cn.createStatement();
-			
 			ps = cn.prepareStatement(SELECT_FROM_USER);			
 			ps.setString(1, login);
 			ps.setString(2, pass);
 			rs = ps.executeQuery();
 			
-			//rs = st.executeQuery(select);
-			
 			if (rs.next()) {
-				
-				//templogin = rs.getString(1);
-				//temppass = rs.getString(2);
 				
 				adminSet = rs.getString(3);
 				if (adminSet.equals("0")) {
 					page = "/jsp/user/user.jsp";
-					//Object userName = session.getAttribute(login);
 				} else {
 					page = "/jsp/admin/admin.jsp";
 				} 
 			}else if (rs.next() == false) {
 				page = "/jsp/error.jsp";
-				}
-			
-			/*if (templogin.equals(login) && temppass.equals(pass)) {
-				page = "/jsp/user/user.jsp";
-			} 
-			if (login.equals("admin") && pass.equals("admin")) {
-				page = "/jsp/admin/admin.jsp";
-			} 
-			if (templogin != login || temppass != pass) {
-				page = "/jsp/error.jsp";
-			} else if (rs.next() == false) {
-				page = "/jsp/error.jsp";
-			}*/
-			
+				}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -95,5 +68,15 @@ public class LoginActionImpl extends AbstractDao implements BasicAction{
 			closeConnection(cn);
 		}
 		return page;
+	}
+
+
+	@Override
+	public String executeName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		UserService service = new UserServiceImpl();
+		String login = request.getParameter("name");
+		String pass = request.getParameter("pass");
+		String name = service.getName(login, pass);
+		return name;
 	}
 }
