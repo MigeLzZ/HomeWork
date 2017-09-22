@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalogs xmlns="http://www.it-academy.by/catalogsSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.it-academy.by/catalogsSchema catalogsSchema.xsd">
+	<book id="1">
+		<title>Book1</title>
+		<pages>1000</pages>
+		<author>
+			<name>Author1</name>
+			<date-of-birth>1962-11-07</date-of-birth>
+		</author>
+	</book>
+	
+	<magazine id="2">
+		<title>Magazine1</title>
+		<pages>100</pages>
+		<redaction>
+			<name>Maxim</name>
+			<amount-of-writers>7</amount-of-writers>
+		</redaction>
+	</magazine>
+	
+	<newspaper id="3">
+		<pages>30</pages>
+		<article id="1">
+			<title>MurderBen</title>
+		</article>
+		<redaction>
+			<name>ComsomolskayaTruth</name>
+			<amount-of-writers>5</amount-of-writers>
+		</redaction>
+	</newspaper>
+	
+</catalogs>

@@ -1,0 +1,30 @@
+<books>
+	<book id="1">
+		<title>Some</title>
+		<pages>1089</pages>
+		<author>
+			<fname>Andrew</fname>
+			<lname>Sapkovsky</lname>
+		</author>
+	</book>
+	<book id="2">
+		<title>Any</title>
+		<pages>875</pages>
+		<author>
+			<fname>Vladimir</fname>
+			<lname>Sorokin</lname>
+		</author>
+	</book>
+	<book id="3">
+		<title>AnySome</title>
+		<pages>514</pages>
+		<author>
+			<fname>Arkadiy</fname>
+			<lname>Strugatskiy</lname>
+		</author>
+		<author>
+			<fname>Boris</fname>
+			<lname>Strugatskiy</lname>
+		</author>
+	</book>
+</books>

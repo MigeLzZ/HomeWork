@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.it-academy.by/catalogsSchema" xmlns:tns="http://www.it-academy.by/catalogsSchema"
+	elementFormDefault="qualified">
+	
+	<xs:element name="catalogs" type="tns:catalogs_type" />
+	
+	<xs:complexType name="catalogs_type">
+		<xs:sequence>
+			<xs:element name="book" type="tns:book_type" maxOccurs="unbounded" />
+			<xs:element name="magazine" type="tns:magazine_type" maxOccurs="unbounded" />
+			<xs:element name="newspaper" type="tns:newspaper_type" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="book_type">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="pages" type="xs:int" />
+			<xs:element name="author" type="tns:author_type"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:int" />
+	</xs:complexType>
+	
+	<xs:complexType name="author_type">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="date-of-birth" type="xs:date" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="magazine_type">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="pages" type="xs:int" />
+			<xs:element name="redaction" type="tns:redaction_type" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:int" />
+	</xs:complexType>
+	
+	
+	<xs:complexType name="redaction_type">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="amount-of-writers" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="newspaper_type">
+		<xs:sequence>
+			<xs:element name="pages" type="xs:int" />
+			<xs:element name="article" type="tns:article_type" />
+			<xs:element name="redaction" type="tns:redaction_type" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:int" />
+	</xs:complexType>	
+	
+	<xs:complexType name="article_type">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:int" />
+	</xs:complexType>
+</xs:schema>
