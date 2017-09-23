@@ -12,7 +12,10 @@ public class BasicChooser {
 		case LOGIN:
 			basicAction = new LoginActionImpl();
 			break;
+		case CLOSE:
+			break;
 		}
+		
 		return basicAction;
 	}
 }

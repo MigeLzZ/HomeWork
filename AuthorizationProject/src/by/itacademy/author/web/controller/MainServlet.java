@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		session.setMaxInactiveInterval(30);
+		session.setMaxInactiveInterval(2);
 
 		String command = req.getParameter("command");
 
@@ -46,7 +46,7 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		session.setMaxInactiveInterval(30);
+		session.setMaxInactiveInterval(2);
 
 		String command = req.getParameter("command");
 

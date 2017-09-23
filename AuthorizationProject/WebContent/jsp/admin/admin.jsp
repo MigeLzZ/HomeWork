@@ -7,6 +7,6 @@
 <title>Administrator page</title>
 </head>
 <body>
-	<h2>Hello Dear Administrator</h2>
+	<h2>Hello Dear ${userName} !</h2>
 </body>
 </html>
